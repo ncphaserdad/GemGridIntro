@@ -11,6 +11,9 @@ const stones = ['amber', 'amethyst', 'aquamarine', 'citrine', 'crystal' , 'pyram
 
 const NUM_X_CELLS = 10;
 const NUM_Y_CELLS = 10;
+const SCREEN_HEIGHT = 1000;
+const SCREEN_WIDTH = 1000;
+const GEM_SIZE = SCREEN_WIDTH / NUM_X_CELLS;
 
 var container;
 var rnd = new Phaser.Math.RandomDataGenerator();
@@ -18,27 +21,28 @@ var rnd = new Phaser.Math.RandomDataGenerator();
 function preload ()
 {
     //this.load.image('lemming', 'src/amber.png', 32, 32);
-    this.load.image('amber', 'src/gems/amber.png', 32, 32);
-    this.load.image('amethyst', 'src/gems/amethyst.png', 32, 32);
-    this.load.image('aquamarine', 'src/gems/aquamarine.png', 32, 32);
-    this.load.image('citrine', 'src/gems/citrine.png', 32, 32);
-    this.load.image('crystal', 'src/gems/crystal.png', 32, 32);
-    this.load.image('pyramid', 'src/gems/pyramid.png', 32, 32);
-    this.load.image('pyramid', 'src/gems/pyramid.png', 32, 32);
+    this.load.image('amber', 'src/gems/amber.png');
+    this.load.image('amethyst', 'src/gems/amethyst.png');
+    this.load.image('aquamarine', 'src/gems/aquamarine.png');
+    this.load.image('citrine', 'src/gems/citrine.png');
+    this.load.image('crystal', 'src/gems/crystal.png');
+    this.load.image('pyramid', 'src/gems/pyramid.png');
+    this.load.image('pyramid', 'src/gems/pyramid.png');
 
     container = this.add.container(0,0);
-    //generateGem(this, 1,1);
  
 }
 
 
 function generateGem(scene, x,y)
 {
-  var gem = scene.add.sprite(x * 50,y * 50, 'amber')
-      gem.setDisplaySize(50,50);
+  var gem = scene.add.sprite(x * GEM_SIZE,y * GEM_SIZE, 'amber')
+      gem.setDisplaySize(GEM_SIZE,GEM_SIZE);
       gem.setInteractive();
       gem.on("pointerup", function() {
         var rnd = new Phaser.Math.RandomDataGenerator();
+
+        //Let's get a random number from the stones array in the range starting at 1 to the last element in the array
         var stone = rnd.integerInRange(1, stones.length-1);
         console.log(stone);
           this.setTexture(stones[stone]);
@@ -114,8 +118,8 @@ function create2() {
 
 const config = {
   type: Phaser.AUTO,
-  width: 500,
-  height: 500,
+  width: SCREEN_WIDTH,
+  height: SCREEN_HEIGHT,
   backgroundColor: 0x333333,
   scene: {
     preload: preload,
