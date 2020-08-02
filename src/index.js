@@ -12,6 +12,9 @@ const stones = ['amber', 'amethyst', 'aquamarine', 'citrine', 'crystal' , 'pyram
 const NUM_X_CELLS = 10;
 const NUM_Y_CELLS = 10;
 
+var container;
+var rnd = new Phaser.Math.RandomDataGenerator();
+
 function preload ()
 {
     //this.load.image('lemming', 'src/amber.png', 32, 32);
@@ -22,25 +25,16 @@ function preload ()
     this.load.image('crystal', 'src/gems/crystal.png', 32, 32);
     this.load.image('pyramid', 'src/gems/pyramid.png', 32, 32);
     this.load.image('pyramid', 'src/gems/pyramid.png', 32, 32);
+
+    container = this.add.container(0,0);
+    //generateGem(1,1);
  
 }
 
 
-
-function resizeChildren(children, width, height)
+function generateGem(x,y)
 {
-
-  for (var i=0; i< children.length; i++)
-  {
-    children[i].setDisplaySize(width, height);
-    //children[i].height = 30;
-  }
-
-}
-
-function generateGem(container,x,y)
-{
-  var gem = container.add.sprite(x * 50,y * 50, 'amber')
+  var gem = this.add.sprite(x * 50,y * 50, 'amber')
       gem.setDisplaySize(50,50);
       gem.setInteractive();
       gem.on("pointerup", function() {
@@ -55,7 +49,7 @@ function generateGem(container,x,y)
 
 function create()
 {
-  var container = this.add.container(0,0);
+  
   var allGems = [];
   
   
@@ -72,7 +66,7 @@ function create()
       gem.setDisplaySize(50,50);
       gem.setInteractive();
       gem.on("pointerup", function() {
-        var rnd = new Phaser.Math.RandomDataGenerator();
+        
         var stone = rnd.integerInRange(1, stones.length-1);
         console.log(stone);
           this.setTexture(stones[stone]);
@@ -134,8 +128,9 @@ const config = {
   height: 500,
   backgroundColor: 0x333333,
   scene: {
-    preload, create
-  }
+    preload: preload,
+    create: create
+}
 };
 
-const game = new Phaser.Game(config);
+var game = new Phaser.Game(config);
