@@ -1,3 +1,8 @@
+
+/*
+Jewels are not public domain and cannot be copied or used.
+*/
+
 import "./styles.css";
 import Phaser from "phaser";
 
@@ -9,8 +14,8 @@ const gameState = {
 
 const stones = ['amber', 'amethyst', 'aquamarine', 'citrine', 'crystal' , 'pyramid'];
 
-const NUM_X_CELLS = 10;
-const NUM_Y_CELLS = 10;
+const NUM_X_CELLS = 20;
+const NUM_Y_CELLS = 20;
 const SCREEN_HEIGHT = 1000;
 const SCREEN_WIDTH = 1000;
 const GEM_SIZE = SCREEN_WIDTH / NUM_X_CELLS;
