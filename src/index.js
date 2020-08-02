@@ -126,7 +126,7 @@ function create()
       gem.setInteractive();
       gem.on("pointerup", function() {
         var rnd = new Phaser.Math.RandomDataGenerator();
-        var stone = rnd.integerInRange(0, stones.length-1);
+        var stone = rnd.integerInRange(1, stones.length-1);
         console.log(stone);
           this.setTexture(stones[stone]);
       });
