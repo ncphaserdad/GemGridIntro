@@ -27,14 +27,14 @@ function preload ()
     this.load.image('pyramid', 'src/gems/pyramid.png', 32, 32);
 
     container = this.add.container(0,0);
-    //generateGem(1,1);
+    //generateGem(this, 1,1);
  
 }
 
 
-function generateGem(x,y)
+function generateGem(scene, x,y)
 {
-  var gem = this.add.sprite(x * 50,y * 50, 'amber')
+  var gem = scene.add.sprite(x * 50,y * 50, 'amber')
       gem.setDisplaySize(50,50);
       gem.setInteractive();
       gem.on("pointerup", function() {
@@ -60,19 +60,9 @@ function create()
       //Log x and y to the console
       console.log("x=" + x + ", y=" + y);
       
-      //var newGem = generateGem(container,x,y);
+      var newGem = generateGem(this,x,y);
 
-      var gem = this.add.sprite(x * 50,y * 50, 'amber')
-      gem.setDisplaySize(50,50);
-      gem.setInteractive();
-      gem.on("pointerup", function() {
-        
-        var stone = rnd.integerInRange(1, stones.length-1);
-        console.log(stone);
-          this.setTexture(stones[stone]);
-      });
-      
-      allGems.push(gem);
+      allGems.push(newGem);
     }
   }
 
