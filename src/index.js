@@ -36,7 +36,7 @@ function preload ()
     this.load.image('citrine', 'src/gems/citrine.png');
     this.load.image('crystal', 'src/gems/crystal.png');
     this.load.image('pyramid', 'src/gems/pyramid.png');
-    this.load.image('pyramid', 'src/gems/pyramid.png');
+    this.load.image('zircon', 'src/gems/zircon.png');
 
     container = this.add.container(0,0);
  
