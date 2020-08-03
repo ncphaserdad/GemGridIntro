@@ -14,10 +14,12 @@ const gemState = {
 
 const stones = ['amber', 'amethyst', 'aquamarine', 'citrine', 'crystal' , 'pyramid'];
 
-const NUM_X_CELLS = 20;
-const NUM_Y_CELLS = 20;
-const SCREEN_HEIGHT = 1000;
-const SCREEN_WIDTH = 1000;
+//GEM_SIZE = SCREEN_WIDTH / NUM_X_CELLS;
+
+const NUM_X_CELLS = 11;
+const NUM_Y_CELLS = 11;
+const SCREEN_HEIGHT = 500;
+const SCREEN_WIDTH = 500;
 const GEM_SIZE = SCREEN_WIDTH / NUM_X_CELLS;
 
 var gemStates = [];
