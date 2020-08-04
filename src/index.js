@@ -14,6 +14,9 @@ const gemState = {
 
 const stones = ['amber', 'amethyst', 'aquamarine', 'citrine', 'crystal' , 'pyramid'];
 
+const TOP_STONE = 'amber';
+const HIDDEN_STONES = ['citrine', 'crystal', 'gem'];
+
 //GEM_SIZE = SCREEN_WIDTH / NUM_X_CELLS;
 
 const NUM_X_CELLS = 10;
@@ -37,6 +40,7 @@ function preload ()
     this.load.image('crystal', 'src/gems/crystal.png');
     this.load.image('pyramid', 'src/gems/pyramid.png');
     this.load.image('zircon', 'src/gems/zircon.png');
+    this.load.image('zircon', 'src/gems/gem.png');
 
     container = this.add.container(0,0);
  
