@@ -44,8 +44,6 @@ function preload ()
 
 function hideJewels()
 {
-  var rnd = new Phaser.Math.RandomDataGenerator();
-
   //Let's get a random number index to pick a stone name from the HIDDEN_STONES array
   var stoneIndex = rnd.integerInRange(0, HIDDEN_STONES.length-1);
   console.log("stone index is " + stoneIndex);
@@ -73,7 +71,8 @@ function generateGem(scene, x,y)
       gem.on("pointerup", function() 
       {
         var clickedGem = gemStates.get(x+":"+y);
-        console.log("clickedGem:"+clickedGem.gem);
+      
+        console.log("clickedGem:"+x+":"+y+":"+clickedGem.gem);
           
           this.setTexture(clickedGem.gem);
       });
