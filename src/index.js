@@ -57,9 +57,10 @@ function hideJewels()
   console.log("yIndex is " + yIndex);
 
   //Retrieve the gemState and set it to the new name!
+  //gemStates is a Map that contains pairs of strings with the first one being a key
+  //getState.get('1:1') returns the state of the gem at 1:1
   var retrieveGem = gemStates.get(xIndex + ":" + yIndex);
   retrieveGem.gem = HIDDEN_STONES[stoneIndex];
-
 }
 
 
