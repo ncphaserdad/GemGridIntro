@@ -46,13 +46,19 @@ function hideJewels()
 {
   var rnd = new Phaser.Math.RandomDataGenerator();
 
-  //Let's get a random number from the stones array in the range starting at 1 to the last element in the array
+  //Let's get a random number index to pick a stone name from the HIDDEN_STONES array
   var stoneIndex = rnd.integerInRange(0, HIDDEN_STONES.length-1);
   console.log("stone index is " + stoneIndex);
+  console.log("stone is " + stones[stoneIndex]);
 
+  //Let's get a random number index for an X value
   var xIndex = rnd.integerInRange(1, NUM_X_CELLS);
+  console.log("xIndex is " + xIndex);
+  //Let's get a random number index for an Y value
   var yIndex = rnd.integerInRange(1, NUM_Y_CELLS);
+  console.log("yIndex is " + yIndex);
 
+  //Retrieve the gemState and set it to the new name!
   var retrieveGem = gemStates.get(xIndex + ":" + yIndex);
   retrieveGem.gem = stones[stoneIndex];
 
