@@ -44,6 +44,8 @@ function preload ()
 
 function hideJewels()
 {
+  var i;
+  for (i = 0; i < 5; i++) {
   //Let's get a random number index to pick a stone name from the HIDDEN_STONES array
   var stoneIndex = rnd.integerInRange(0, HIDDEN_STONES.length-1);
   console.log("stone index is " + stoneIndex);
@@ -61,6 +63,8 @@ function hideJewels()
   //getState.get('1:1') returns the state of the gem at 1:1
   var retrieveGem = gemStates.get(xIndex + ":" + yIndex);
   retrieveGem.gem = HIDDEN_STONES[stoneIndex];
+  }
+
 }
 
 
