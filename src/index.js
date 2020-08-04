@@ -1,16 +1,12 @@
 
 /*
-Jewels are not public domain and cannot be copied or used.
+Jewel images are not public domain and cannot be copied or used.
 */
 
 import "./styles.css";
 import Phaser from "phaser";
 
-const gemState = {
-  x: -1,
-  y: -1,
-  gemName: 'amber'
-};
+
 
 const stones = ['amber', 'amethyst', 'aquamarine', 'citrine', 'crystal' , 'pyramid'];
 
@@ -25,7 +21,7 @@ const SCREEN_HEIGHT = 500;
 const SCREEN_WIDTH = 500;
 const GEM_SIZE = SCREEN_WIDTH / NUM_X_CELLS;
 
-var gemStates = [];
+let gemStates = new Map();
 
 var container;
 var rnd = new Phaser.Math.RandomDataGenerator();
@@ -40,25 +36,40 @@ function preload ()
     this.load.image('crystal', 'src/gems/crystal.png');
     this.load.image('pyramid', 'src/gems/pyramid.png');
     this.load.image('zircon', 'src/gems/zircon.png');
-    this.load.image('zircon', 'src/gems/gem.png');
+    this.load.image('gem', 'src/gems/gem.png');
 
     container = this.add.container(0,0);
  
 }
 
+function hideJewels()
+{
+  var rnd = new Phaser.Math.RandomDataGenerator();
+
+  //Let's get a random number from the stones array in the range starting at 1 to the last element in the array
+  var stoneIndex = rnd.integerInRange(0, HIDDEN_STONES.length-1);
+  console.log("stone index is " + stoneIndex);
+
+  var xIndex = rnd.integerInRange(1, NUM_X_CELLS);
+  var yIndex = rnd.integerInRange(1, NUM_Y_CELLS);
+
+  var retrieveGem = gemStates.get(xIndex + ":" + yIndex);
+  retrieveGem.gem = stones[stoneIndex];
+
+}
+
 
 function generateGem(scene, x,y)
 {
-  var gem = scene.add.sprite(x * GEM_SIZE,y * GEM_SIZE, 'amber')
+      var gem = scene.add.sprite(x * GEM_SIZE,  y * GEM_SIZE, TOP_STONE)
       gem.setDisplaySize(GEM_SIZE,GEM_SIZE);
       gem.setInteractive();
-      gem.on("pointerup", function() {
-        var rnd = new Phaser.Math.RandomDataGenerator();
-
-        //Let's get a random number from the stones array in the range starting at 1 to the last element in the array
-        var stone = rnd.integerInRange(1, stones.length-1);
-        console.log(stone);
-          this.setTexture(stones[stone]);
+      gem.on("pointerup", function() 
+      {
+        var clickedGem = gemStates.get(x+":"+y);
+        console.log("clickedGem:"+clickedGem.gem);
+          
+          this.setTexture(clickedGem.gem);
       });
     return gem;
 
@@ -78,11 +89,21 @@ function create()
       
       var newGem = generateGem(this,x,y);
 
+      var currentState = {};
+      currentState.x = x;
+      currentState.y = y;
+      currentState.gem = 'pyramid';
+      gemStates.set(x+":"+y, currentState )
+
       allGems.push(newGem);
     }
   }
 
+  console.log(gemStates);
+
   container.add(allGems);
+
+  hideJewels();
 
 }
 
