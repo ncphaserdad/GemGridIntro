@@ -16,8 +16,8 @@ const stones = ['amber', 'amethyst', 'aquamarine', 'citrine', 'crystal' , 'pyram
 
 //GEM_SIZE = SCREEN_WIDTH / NUM_X_CELLS;
 
-const NUM_X_CELLS = 11;
-const NUM_Y_CELLS = 11;
+const NUM_X_CELLS = 10;
+const NUM_Y_CELLS = 10;
 const SCREEN_HEIGHT = 500;
 const SCREEN_WIDTH = 500;
 const GEM_SIZE = SCREEN_WIDTH / NUM_X_CELLS;
