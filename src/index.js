@@ -15,11 +15,11 @@ const HIDDEN_STONES = ['citrine', 'crystal', 'gem'];
 
 //GEM_SIZE = SCREEN_WIDTH / NUM_X_CELLS;
 
-const NUM_X_CELLS = 10;
-const NUM_Y_CELLS = 10;
+const NUM_X_CELLS = 5;
+const NUM_Y_CELLS = 5;
 const SCREEN_HEIGHT = 500;
 const SCREEN_WIDTH = 500;
-const GEM_SIZE = SCREEN_WIDTH / NUM_X_CELLS;
+const GEM_SIZE = (SCREEN_WIDTH-100) / NUM_X_CELLS;
 
 let gemStates = new Map();
 
@@ -47,7 +47,7 @@ function hideJewels()
   //Let's get a random number index to pick a stone name from the HIDDEN_STONES array
   var stoneIndex = rnd.integerInRange(0, HIDDEN_STONES.length-1);
   console.log("stone index is " + stoneIndex);
-  console.log("stone is " + stones[stoneIndex]);
+  console.log("stone is " + HIDDEN_STONES[stoneIndex]);
 
   //Let's get a random number index for an X value
   var xIndex = rnd.integerInRange(1, NUM_X_CELLS);
@@ -58,7 +58,7 @@ function hideJewels()
 
   //Retrieve the gemState and set it to the new name!
   var retrieveGem = gemStates.get(xIndex + ":" + yIndex);
-  retrieveGem.gem = stones[stoneIndex];
+  retrieveGem.gem = HIDDEN_STONES[stoneIndex];
 
 }
 
@@ -85,10 +85,10 @@ function create()
   
   var allGems = [];
   
-  for (var x = 1; x < NUM_X_CELLS; x++) {
+  for (var x = 1; x <= NUM_X_CELLS; x++) {
     
     //Max Y size
-    for (var y = 1; y < NUM_Y_CELLS; y++) {
+    for (var y = 1; y <= NUM_Y_CELLS; y++) {
       //Log x and y to the console
       console.log("x=" + x + ", y=" + y);
       
