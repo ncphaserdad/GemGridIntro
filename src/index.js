@@ -22,6 +22,8 @@ const SCREEN_HEIGHT = 500;
 const SCREEN_WIDTH = 500;
 const GEM_SIZE = (SCREEN_WIDTH-100) / NUM_X_CELLS;
 
+const NUM_GUESSES = 10;
+var countdown = NUM_GUESSES;
 let gemStates = new Map();
 
 var container;
@@ -46,7 +48,7 @@ function preload ()
 function hideJewels()
 {
   var i;
-  for (i = 0; i < 25; i++) {
+  for (i = 0; i < 5; i++) {
     hideJewels2();
   }
 }
@@ -93,6 +95,11 @@ function generateGem(scene, x,y)
       gem.setInteractive();
       gem.on("pointerup", function() 
       {
+
+//subtract 1 from countdown
+countdown--;
+console.log('number of guesses:'+ countdown);
+
         var clickedGem = gemStates.get(x+":"+y);
       
         console.log("clickedGem:"+x+":"+y+":"+clickedGem.gem);
