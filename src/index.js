@@ -102,7 +102,7 @@ function generateGem(scene, x,y)
 countdown--;
 console.log('number of guesses:'+ countdown);
 
-if (countdown === 0){
+if (countdown <= 0){
 console.log('you ran out of guesses');
 }
 else{
