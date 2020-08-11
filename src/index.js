@@ -104,6 +104,7 @@ console.log('number of guesses:'+ countdown);
 
 if (countdown <= 0){
 console.log('you ran out of guesses');
+displayText(scene, "you lost!");
 }
 else{
   console.log('keep guessing');
@@ -149,6 +150,12 @@ function create()
 
   hideJewels();
 
+}
+
+function displayText(scene, msg){
+  var style = { font: "25px Arial", fill: "#ff0044", strokeThickness:"10", align:"justify"};
+  var textMsg = scene.add.text(0, 0, msg, style);
+  //textMsg.anchor.set(0.5);
 }
 
 const config = {
