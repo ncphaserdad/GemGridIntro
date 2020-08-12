@@ -22,7 +22,9 @@ const SCREEN_HEIGHT = 500;
 const SCREEN_WIDTH = 500;
 const GEM_SIZE = (SCREEN_WIDTH-100) / NUM_X_CELLS;
 
-const NUM_GUESSES = 11;
+const NUM_JEWELS = 5;
+const NUM_GUESSES = NUM_JEWELS*4;
+
 var countdown = NUM_GUESSES;
 let gemStates = new Map();
 
@@ -50,7 +52,7 @@ function preload ()
 function hideJewels()
 {
   var i;
-  for (i = 0; i < 5; i++) {
+  for (i = 0; i < NUM_JEWELS; i++) {
     hideJewels2();
   }
 }
