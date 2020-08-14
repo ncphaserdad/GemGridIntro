@@ -23,9 +23,11 @@ const SCREEN_WIDTH = 500;
 const GEM_SIZE = (SCREEN_WIDTH-100) / NUM_X_CELLS;
 
 const NUM_JEWELS = 5;
-const NUM_GUESSES = NUM_JEWELS*4;
+const NUM_GUESSES = NUM_JEWELS*40;
 
 var countdown = NUM_GUESSES;
+var wincount = 0;
+
 let gemStates = new Map();
 
 
@@ -115,6 +117,21 @@ else{
   console.log("clickedGem:"+x+":"+y+":"+clickedGem.gem);
     
     this.setTexture(clickedGem.gem);
+
+//if you click and it does not uncover a pyramid then increase your win count by 1
+
+if (clickedGem.gem != DEFAULT_STONE) {
+   wincount++;
+}
+//if the win count is 5 then display you win 
+
+if (wincount === NUM_JEWELS){
+  displayText(scene, "you win!");
+
+}
+
+console.log("wincount:"+wincount);
+
 }
        
       });
