@@ -108,7 +108,7 @@ console.log('number of guesses:'+ countdown);
 
 if (countdown <= 0){
 console.log('you ran out of guesses');
-displayText(scene, "you lost!");
+displayText(scene, "you lost!", "#ff0044");
 }
 else{
   console.log('keep guessing');
@@ -126,7 +126,7 @@ if (clickedGem.gem != DEFAULT_STONE) {
 //if the win count is 5 then display you win 
 
 if (wincount === NUM_JEWELS){
-  displayText(scene, "you win!");
+  displayText(scene, "you win!", "#00ff00");
 
 }
 
@@ -171,8 +171,8 @@ function create()
 
 }
 
-function displayText(scene, msg){
-  var style = { font: "25px Arial", fill: "#ff0044", strokeThickness:"10", align:"justify"};
+function displayText(scene, msg, dColor){
+  var style = { font: "25px Arial", fill: dColor, strokeThickness:"10", align:"justify"};
   var textMsg = scene.add.text(0, 0, msg, style);
   //textMsg.anchor.set(0.5);
 }
